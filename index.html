@@ -3,140 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>카테고리 페이지</title>
+    <title>하위 메뉴</title>
     <style>
-        /* 레이아웃 스타일링 */
-        body {
+        /* 스타일링 */
+        .container {
             display: flex;
         }
 
-        .sidebar {
+        .menu-container {
             flex: 1;
+            margin-right: 20px;
             background-color: #333;
             color: #fff;
             padding: 20px;
-            border-right: 1px solid #555;
+            border-radius: 5px;
         }
 
-        .content {
-            flex: 3;
-            padding: 20px;
-        }
-
-        /* 카테고리 스타일링 */
-        .category-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .category-list li {
+        .menu-item {
             cursor: pointer;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .category-list li:hover {
+        .menu-item:hover,
+        .menu-item.active {
             background-color: #555;
+            color: #fff;
         }
 
-        .category-icon {
-            margin-right: 10px;
-            font-size: 24px;
-        }
-
-        /* 카테고리 내용 스타일링 */
-        .category-content {
+        .sub-menu {
             display: none;
         }
 
-        .category-content.active {
+        .sub-menu.active {
             display: block;
         }
 
-        /* 링크 스타일링 */
-        .category-links {
-            list-style-type: none;
-            padding: 0;
+        .sub-menu-item {
+            cursor: pointer;
+            margin-left: 15px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .category-links li {
-            margin-bottom: 5px;
+        .sub-menu-item:hover,
+        .sub-menu-item.active {
+            background-color: #777;
+            color: #fff;
+        }
+
+        .content-container {
+            flex: 2;
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            color: #333;
+            display: none; /* 최초에는 컨텐츠를 숨김 */
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>카테고리</h2>
-        <ul class="category-list">
-            <li onclick="showContent('category1')">
-                <i class="category-icon">▶️</i> 카테고리 1
-            </li>
-            <li onclick="showContent('category2')">
-                <i class="category-icon">▶️</i> 카테고리 2
-            </li>
-            <li onclick="showContent('category3')">
-                <i class="category-icon">▶️</i> 카테고리 3
-            </li>
-        </ul>
-    </div>
-
-
-    <div class="content">
-        <div id="category1" class="category-content">
-            <h2>카테고리 1의 내용</h2>
-            <p>카테고리 1의 내용을 여기에 작성합니다.</p>
-            <ul class="category-links">
-                <li><a href="#line1">A 항목</a></li>
-                <li><a href="#line2">B 항목</a></li>
-                <li><a href="#line3">C 항목</a></li>
-                <li><a href="#line4">D 항목</a></li>
+    <div class="container">
+        <div class="menu-container">
+            <div class="menu-item" onclick="toggleSubmenu('menu1')" onmouseover="activateMenuItem(this)" onmouseout="deactivateMenuItem(this)">Research</div>
+            <ul id="menu1-sub" class="sub-menu">
+                <li class="sub-menu-item" onclick="displayContent('content1-1')">하위 메뉴 1-1</li>
+                <li class="sub-menu-item" onclick="displayContent('content1-2')">하위 메뉴 1-2</li>
+                <li class="sub-menu-item" onclick="displayContent('content1-3')">하위 메뉴 1-3</li>
             </ul>
-            <div id="line1">
-                <h3>A 항목</h3>
-                <p>A 항목에 대한 추가 설명을 작성합니다.</p>
-                <img src="a.jpg" alt="A 항목 이미지">
-            </div>
-            <div id="line2">
-                <h3>B 항목</h3>
-                <p>B 항목에 대한 추가 설명을 작성합니다.</p>
-                <img src="b.jpg" alt="B 항목 이미지">
-            </div>
-            <div id="line3">
-                <h3>C 항목</h3>
-                <p>C 항목에 대한 추가 설명을 작성합니다.</p>
-                <img src="c.jpg" alt="C 항목 이미지">
-            </div>
-            <div id="line4">
-                <h3>D 항목</h3>
-                <p>D 항목에 대한 추가 설명을 작성합니다.</p>
-                <img src="d.jpg" alt="D 항목 이미지">
-            </div>
+
+            <div class="menu-item" onclick="toggleSubmenu('menu2')" onmouseover="activateMenuItem(this)" onmouseout="deactivateMenuItem(this)">Academic</div>
+            <ul id="menu2-sub" class="sub-menu">
+                <li class="sub-menu-item" onclick="displayContent('content2-1')">하위 메뉴 2-1</li>
+                <li class="sub-menu-item" onclick="displayContent('content2-2')">하위 메뉴 2-2</li>
+                <li class="sub-menu-item" onclick="displayContent('content2-3')">하위 메뉴 2-3</li>
+            </ul>
+			
+			<div class="menu-item" onclick="toggleSubmenu('menu3')" onmouseover="activateMenuItem(this)" onmouseout="deactivateMenuItem(this)">Project</div>
+			<ul id="menu3-sub" class="sub-menu">
+                <li class="sub-menu-item" onclick="displayContent('content3-1')">하위 메뉴 3-1</li>
+                <li class="sub-menu-item" onclick="displayContent('content3-2')">하위 메뉴 3-2</li>
+                <li class="sub-menu-item" onclick="displayContent('content3-3')">하위 메뉴 3-3</li>
+            </ul>
+			
+			<div class="menu-item" onclick="toggleSubmenu('menu4')" onmouseover="activateMenuItem(this)" onmouseout="deactivateMenuItem(this)">Tech Trend</div>
+			<ul id="menu4-sub" class="sub-menu">
+                <li class="sub-menu-item" onclick="displayContent('content4-1')">하위 메뉴 4-1</li>
+                <li class="sub-menu-item" onclick="displayContent('content4-2')">하위 메뉴 4-2</li>
+                <li class="sub-menu-item" onclick="displayContent('content4-3')">하위 메뉴 4-3</li>
+            </ul>
+			
+			<div class="menu-item" onclick="toggleSubmenu('menu5')" onmouseover="activateMenuItem(this)" onmouseout="deactivateMenuItem(this)">Job</div>
+			<ul id="menu5-sub" class="sub-menu">
+                <li class="sub-menu-item" onclick="displayContent('content5-1')">하위 메뉴 5-1</li>
+                <li class="sub-menu-item" onclick="displayContent('content5-2')">하위 메뉴 5-2</li>
+                <li class="sub-menu-item" onclick="displayContent('content5-3')">하위 메뉴 5-3</li>
+            </ul>			
         </div>
 
-        <div id="category2" class="category-content">
-            <h2>카테고리 2의 내용</h2>
-            <p>카테고리 2의 내용을 여기에 작성합니다.</p>
-            <!-- 다른 카테고리에 대한 링크와 내용 추가 -->
-        </div>
-
-        <div id="category3" class="category-content">
-            <h2>카테고리 3의 내용</h2>
-            <p>카테고리 3의 내용을 여기에 작성합니다.</p>
-            <!-- 다른 카테고리에 대한 링크와 내용 추가 -->
+        <div class="content-container">
+            <div class="content" id="content1-1">
+                <h2>카테고리 1의 내용</h2>
+				<p>카테고리 1의 내용을 여기에 작성합니다.</p>
+				<ul class="category-links">
+					<li><a href="#line1">A 항목</a></li>
+					<li><a href="#line2">B 항목</a></li>
+					<li><a href="#line3">C 항목</a></li>
+					<li><a href="#line4">D 항목</a></li>
+				</ul>
+				<div id="line1">
+					<h3>A 항목</h3>
+					<p>A 항목에 대한 추가 설명을 작성합니다.</p>
+					<img src="a.jpg" alt="A 항목 이미지">
+				</div>
+				<div id="line2">
+					<h3>B 항목</h3>
+					<p>B 항목에 대한 추가 설명을 작성합니다.</p>
+					<img src="b.jpg" alt="B 항목 이미지">
+				</div>
+				<div id="line3">
+					<h3>C 항목</h3>
+					<p>C 항목에 대한 추가 설명을 작성합니다.</p>
+					<img src="c.jpg" alt="C 항목 이미지">
+				</div>
+				<div id="line4">
+					<h3>D 항목</h3>
+					<p>D 항목에 대한 추가 설명을 작성합니다.</p>
+					<img src="d.jpg" alt="D 항목 이미지">
+				</div>
+            </div>
+            <div class="content" id="content1-2">
+                하위 메뉴 1-2에 대한 내용을 추가하세요.
+            </div>
+            <div class="content" id="content1-3">
+                하위 메뉴 1-3에 대한 내용을 추가하세요.
+            </div>
+            <div class="content" id="content2-1">
+                하위 메뉴 2-1에 대한 내용을 추가하세요.
+            </div>
+            <div class="content" id="content2-2">
+                하위 메뉴 2-2에 대한 내용을 추가하세요.
+            </div>
+            <div class="content" id="content2-3">
+                하위 메뉴 2-3에 대한 내용을 추가하세요.
+            </div>
         </div>
     </div>
 
     <script>
-        // JavaScript 함수로 카테고리 내용을 표시/숨김
-        function showContent(category) {
-            const categoryContents = document.querySelectorAll('.category-content');
-            categoryContents.forEach(content => {
-                content.classList.remove('active');
-            });
+        // JavaScript 함수로 하위 메뉴 토글
+        function toggleSubmenu(menuId) {
+            const subMenu = document.getElementById(`${menuId}-sub`);
+            if (subMenu.classList.contains('active')) {
+                subMenu.classList.remove('active');
+            } else {
+                subMenu.classList.add('active');
+            }
+        }
 
-            const selectedContent = document.getElementById(category);
-            selectedContent.classList.add('active');
+        // 메뉴 아이템을 엑티브 상태로 변경
+        function activateMenuItem(item) {
+            item.classList.add('active');
+        }
+
+        // 메뉴 아이템의 엑티브 상태를 제거
+        function deactivateMenuItem(item) {
+            item.classList.remove('active');
+        }
+
+        // 하위 메뉴 아이템을 엑티브 상태로 변경하고 해당 컨텐츠를 표시
+        function displayContent(contentId) {
+            const contentDivs = document.querySelectorAll('.content');
+            contentDivs.forEach(function(div) {
+                div.style.display = 'none';
+            });
+            const contentDiv = document.getElementById(contentId);
+            contentDiv.style.display = 'block';
         }
     </script>
 </body>

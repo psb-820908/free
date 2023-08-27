@@ -1,104 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>카테고리 페이지</title>
-    <style>
-        /* 레이아웃 스타일링 */
-        body {
-            display: flex;
-        }
-
-        .sidebar {
-            flex: 1;
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            border-right: 1px solid #555;
-        }
-
-        .content {
-            flex: 3;
-            padding: 20px;
-        }
-
-        /* 카테고리 스타일링 */
-        .category-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .category-list li {
-            cursor: pointer;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .category-list li:hover {
-            background-color: #555;
-        }
-
-        .category-icon {
-            margin-right: 10px;
-            font-size: 24px;
-        }
-
-        /* 카테고리 내용 스타일링 */
-        .category-content {
-            display: none;
-        }
-
-        .category-content.active {
-            display: block;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘은 다시 못 올 어제다</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 2px;
+  }
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
+  .bookmark {
+    width: 200px;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
-    <div class="sidebar">
-        <h2>카테고리</h2>
-        <ul class="category-list">
-            <li onclick="showContent('category1')">
-                <i class="category-icon">▶️</i> 카테고리 1
-            </li>
-            <li onclick="showContent('category2')">
-                <i class="category-icon">▶️</i> 카테고리 2
-            </li>
-            <li onclick="showContent('category3')">
-                <i class="category-icon">▶️</i> 카테고리 3
-            </li>
-        </ul>
+  <header>
+    <h2>공부하세요</h2>
+  </header>
+  <main>
+	<div class="bookmark">
+      <a href="https://kooc.kaist.ac.kr/#?categoryid=905" target="_blank">KOOC kaist massive open online course</a>
     </div>
-
-    <div class="content">
-        <div id="category1" class="category-content">
-            <h2>카테고리 1의 내용</h2>
-            <p>카테고리 1의 내용을 여기에 작성합니다.</p>
-        </div>
-
-        <div id="category2" class="category-content">
-            <h2>카테고리 2의 내용</h2>
-            <p>카테고리 2의 내용을 여기에 작성합니다.</p>
-        </div>
-
-        <div id="category3" class="category-content">
-            <h2>카테고리 3의 내용</h2>
-            <p>카테고리 3의 내용을 여기에 작성합니다.</p>
-        </div>
+	<div class="bookmark">
+      <a href="https://datascienceschool.net/intro.html" target="_blank">DS kim.dohhyoung@gmail.com</a>
     </div>
-
-    <script>
-        // JavaScript 함수로 카테고리 내용을 표시/숨김
-        function showContent(category) {
-            const categoryContents = document.querySelectorAll('.category-content');
-            categoryContents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            const selectedContent = document.getElementById(category);
-            selectedContent.classList.add('active');
-        }
-    </script>
+  </main>	
+<header>
+	<h2>써먹으세요</h2>
+</header>
+  <main>
+    <div class="bookmark">
+      <a href="https://github.com/ultralytics/yolov5" target="_blank">Yolov5 Github</a>
+    </div>
+    <div class="bookmark">
+      <a href="https://github.com/ultralytics/ultralytics" target="_blank">Yolov8 Github</a>
+    </div> 
+    <div class="bookmark">
+      <a href="https://github.com/hailo-ai/hailo_model_zoo/blob/master/docs/PUBLIC_MODELS.rst#low-light-enhancement" target="_blank">Hailo Github model zoo</a>
+    </div> 
+	https://deep-learning-study.tistory.com/606 // softnms
+	https://visionblog.vieworks.com/knowledge/standard-n-interface/
+  </main>
+  <header>
+    <h2>퇴근하세요</h2>
+  </header>
+    <main>
+    </main>
+<header>
+<h2>쇼핑하세요</h2>
+</header>
+  <main>
+    <div class="bookmark">
+      <a href="https://gpu.userbenchmark.com/Compare/Nvidia-RTX-2060S-Super-vs-Group-/4049vs10" target="_blank">PC Banchmark</a>
+    </div>
+  </main>
 </body>
 </html>
